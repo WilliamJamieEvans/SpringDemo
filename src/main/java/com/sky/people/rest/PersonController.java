@@ -23,12 +23,16 @@ public class PersonController {
     }
 
 
-
     @GetMapping("/getAll")
     public List<Person> getAll() {
         return this.people;
     }
 
+    @GetMapping("/get/{id}")
+    public Person getPerson(@PathVariable int id) { // pulls id from the path(url)
+        System.out.println("id: " + id);
+        return this.people.get(id);
+    }
 
 
 }
