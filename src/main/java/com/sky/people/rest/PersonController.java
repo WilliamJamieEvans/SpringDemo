@@ -41,11 +41,11 @@ public class PersonController {
     }
 
     @PatchMapping("/update/{id}")
-    public Person updatePerson(@PathVariable int id, @PathParam("name") String name, @PathParam("age")int age, @PathParam("job")String job) {
+    public Person updatePerson(@PathVariable int id, @PathParam("name") String name, @PathParam("age")Integer age, @PathParam("job")String job) {
             Person old = this.people.get(id);
 
             if (name != null) old.setName(name);
-            if (age > 0) old.setAge(age);
+            if (age != null ) old.setAge(age);
             if  (job != null) old.setJob(job);
 
             return old;
