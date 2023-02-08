@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 public class PersonController {
 
-    private List<Person> people = new ArrayList<>();
+    private List<Person> people = new ArrayList<>(); //Person is a list not a database
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String greeting() {
