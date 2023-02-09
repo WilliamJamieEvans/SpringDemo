@@ -1,10 +1,18 @@
 package com.sky.people.domain;
-
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
+@Entity // flags this class as a DB entity (table)
 public class Person {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment the id
+    private Integer id;
+
+
     @Size(min = 2, max = 50)
+    @Column(nullable = false, name = "fullname") // NOT NULL
     private String name;
 
     @Min(0)
@@ -22,7 +30,7 @@ public class Person {
         this.job = job;
     }
 
-    // REQUIRED - empty contractor
+    // REQUIRED - empty constructor
     public Person(){
     }
 
@@ -51,6 +59,11 @@ public class Person {
         this.job = job;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
-
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
