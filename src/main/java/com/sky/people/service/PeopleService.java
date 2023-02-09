@@ -4,7 +4,7 @@ import com.sky.people.domain.Person;
 
 import java.util.List;
 
-interface PeopleService {
+public interface PeopleService {
 
     public abstract Person createPerson(Person p);
 

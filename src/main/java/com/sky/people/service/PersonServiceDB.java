@@ -4,6 +4,7 @@ import com.sky.people.domain.Person;
 
 import java.util.List;
 
+//@Service
 public class PersonServiceDB implements PeopleService {
 
 
