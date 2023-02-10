@@ -22,12 +22,24 @@ public class Person {
     @NotNull
     private String job;
 
+    private String niNumber;
 
 
-    public Person(String name, int age, String job) {
+
+    public String getNiNumber() {
+        return niNumber;
+    }
+
+    public void setNiNumber(String niNumber) {
+        this.niNumber = niNumber;
+    }
+
+
+    public Person(String name, int age, String job, String niNumber) {
         this.name = name;
         this.age = age;
         this.job = job;
+        this.niNumber = niNumber;
     }
 
     // REQUIRED - empty constructor
@@ -40,6 +52,7 @@ public class Person {
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
