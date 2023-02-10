@@ -27,10 +27,11 @@ public class PersonReqDTO {
         this.notNiNumber = notNiNumber;
     }
 
-    public PersonReqDTO(String fullName, Integer oldness, String occupation) {
+    public PersonReqDTO(String fullName, Integer oldness, String occupation, String notNiNumber) {
         this.fullName = fullName;
         this.oldness = oldness;
         this.occupation = occupation;
+
     }
     public PersonReqDTO(){
 
