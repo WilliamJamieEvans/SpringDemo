@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sky.people.personDTO.PersonDTO;
 import com.sky.people.personDTO.PersonReqDTO;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.engine.TestExecutionResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -48,6 +49,19 @@ public class PersonIntegrationTest {
         ResultMatcher checkBody = MockMvcResultMatchers.content().json(this.mapper.writeValueAsString(created));
         // DO THE REQ AND CHECK THE RESPONSE
 
+        this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
+    }
+
+    @Test
+    void testGet() throws Exception{
+        //SETTING UP THE REQUEST
+        RequestBuilder req = MockMvcRequestBuilders.get("/get/1");
+        //CHECK THE RESPONSE STATUS
+        ResultMatcher checkStatus = MockMvcResultMatchers.status().isOk();
+        PersonDTO person = new PersonDTO("NameTEST", 24,"SQLTEST");
+        //CHECK THE RESPONSE BODY
+        ResultMatcher checkBody = MockMvcResultMatchers.content().json(this.mapper.writeValueAsString(person));
+        // DO THE REQ AND CHECK THE RESPONSE
         this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
     }
 }
