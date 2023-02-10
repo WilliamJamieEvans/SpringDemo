@@ -1,6 +1,8 @@
 package com.sky.people.personDTO;
 
-public class PersonDTO {
+public class PersonReqDTO {
+
+
 
 
     private String fullName;
@@ -8,13 +10,30 @@ public class PersonDTO {
 
     private  String occupation;
 
+    private String notNiNumber;
 
 
 
-    public PersonDTO(String fullName, Integer oldness, String occupation) {
+    public PersonReqDTO(String notNiNumber) {
+        this.notNiNumber = notNiNumber;
+    }
+
+
+    public String getNotNiNumber() {
+        return notNiNumber;
+    }
+
+    public void setNotNiNumber(String notNiNumber) {
+        this.notNiNumber = notNiNumber;
+    }
+
+    public PersonReqDTO(String fullName, Integer oldness, String occupation) {
         this.fullName = fullName;
         this.oldness = oldness;
         this.occupation = occupation;
+    }
+    public PersonReqDTO(){
+
     }
 
 

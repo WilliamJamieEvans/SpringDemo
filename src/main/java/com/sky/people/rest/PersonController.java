@@ -2,6 +2,7 @@ package com.sky.people.rest;
 
 import com.sky.people.domain.Person;
 import com.sky.people.personDTO.PersonDTO;
+import com.sky.people.personDTO.PersonReqDTO;
 import com.sky.people.service.PeopleService;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -27,9 +28,11 @@ public class PersonController {
 
 
     @PostMapping("/create")
-    public PersonDTO addPerson(@RequestBody @Valid Person person) {
+    public PersonDTO addPerson(@RequestBody @Valid PersonReqDTO person) {
 
-        Person created = this.service.createPerson(person);
+        Person toCreate = new Person(person.getFullName(), person.getOldness(), person.getOccupation(), person.getNotNiNumber());
+        Person created = this.service.createPerson(toCreate);
+
         PersonDTO dto = new PersonDTO(created.getName(), created.getAge(), created.getJob());
         return dto;
     }
@@ -44,6 +47,7 @@ public class PersonController {
     // for each Person person in found
         for (Person person : found) {
             PersonDTO dto = new PersonDTO(person.getName(), person.getAge(), person.getJob());
+            dtos.add(dto);
         }
 
         return dtos;
