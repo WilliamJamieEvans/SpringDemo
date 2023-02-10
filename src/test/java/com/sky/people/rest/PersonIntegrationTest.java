@@ -64,4 +64,32 @@ public class PersonIntegrationTest {
         // DO THE REQ AND CHECK THE RESPONSE
         this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
     }
+
+    @Test
+    void testRemove() throws Exception{
+        //SETTING UP THE REQUEST
+        RequestBuilder req = MockMvcRequestBuilders.delete("/remove/1");
+        //CHECK THE RESPONSE STATUS
+        ResultMatcher checkStatus = MockMvcResultMatchers.status().isOk();
+        PersonDTO person = new PersonDTO("NameTEST", 24,"SQLTEST");
+        //CHECK THE RESPONSE BODY
+        ResultMatcher checkBody = MockMvcResultMatchers.content().json(this.mapper.writeValueAsString(person));
+        // DO THE REQ AND CHECK THE RESPONSE
+        this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
+    }
+
+    @Test
+    void testUpdate() throws Exception{
+        //SETTING UP THE REQUEST
+        RequestBuilder req = MockMvcRequestBuilders.patch("/update/1");
+        //CHECK THE RESPONSE STATUS
+        ResultMatcher checkStatus = MockMvcResultMatchers.status().isOk();
+        PersonDTO person = new PersonDTO("NameTEST", 24,"SQLTEST");
+        //CHECK THE RESPONSE BODY
+        ResultMatcher checkBody = MockMvcResultMatchers.content().json(this.mapper.writeValueAsString(person));
+        // DO THE REQ AND CHECK THE RESPONSE
+        this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
+    }
+
+
 }
