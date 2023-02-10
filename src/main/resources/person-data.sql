@@ -1,0 +1,1 @@
+insert into person (id, age, job, fullname, ni_number) values (default, 24, 'SQLTEST', 'NameTEST', 'NI1 te5T')
