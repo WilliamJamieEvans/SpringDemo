@@ -4,6 +4,8 @@ import com.sky.people.domain.Person;
 import com.sky.people.personDTO.PersonDTO;
 import com.sky.people.personDTO.PersonReqDTO;
 import com.sky.people.service.PeopleService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
@@ -28,13 +30,13 @@ public class PersonController {
 
 
     @PostMapping("/create")
-    public PersonDTO addPerson(@RequestBody @Valid PersonReqDTO person) {
+    public ResponseEntity<PersonDTO> addPerson(@RequestBody @Valid PersonReqDTO person) {
 
         Person toCreate = new Person(person.getFullName(), person.getOldness(), person.getOccupation(), person.getNotNiNumber());
         Person created = this.service.createPerson(toCreate);
-
         PersonDTO dto = new PersonDTO(created.getName(), created.getAge(), created.getJob());
-        return dto;
+
+        return new ResponseEntity<PersonDTO>(dto, HttpStatus.CREATED);
     }
 
 

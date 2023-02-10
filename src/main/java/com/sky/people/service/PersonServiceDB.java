@@ -1,6 +1,7 @@
 package com.sky.people.service;
 
 import com.sky.people.domain.Person;
+import com.sky.people.exception.PersonNotFoundException;
 import com.sky.people.persistence.PersonRepo;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,9 @@ public class PersonServiceDB implements PeopleService {
 
     @Override
     public Person getById(int id) {
-        return this.repo.findById(id).get();
+            //this is for 404
+            //returns Person if its found or throws the exception if it isn't
+        return this.repo.findById(id).orElseThrow(() -> new PersonNotFoundException());
     }
 
     @Override
